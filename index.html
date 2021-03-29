@@ -4,23 +4,132 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>フル単ナビ</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 <body>
+    <header></header>
     <div id="app">
-        <v-app>
-            <v-app-bar color="orange" app>
+        <v-app >
+            <v-app-bar app dark color="orange">
+                <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
                 <v-toolbar-title>フル単ナビ</v-toolbar-title>
             </v-app-bar>
+            <v-navigation-drawer
+                    v-model="drawer"
+                    absolute
+                    temporary
+            >
+                <v-list
+                        nav
+                        dense
+                >
+                    <v-list-item-group
+                            v-model="group"
+                            active-class="deep-purple--text text--accent-4"
+                    >
+                        <v-list-item href="https://app.fulltan-navi.com/">
+                            <v-list-item-icon>
+                                <v-icon>mdi-home</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-title>ホーム</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item href="https://app.fulltan-navi.com/">
+                            <v-list-item-icon>
+                                <v-icon>mdi-login</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-title>ログイン</v-list-item-title>
+                        </v-list-item>
+                        <v-list-item href="https://app.fulltan-navi.com/">
+                            <v-list-item-icon>
+                                <v-icon>mdi-pencil</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-title>サインアップ</v-list-item-title>
+                        </v-list-item>
+                    </v-list-item-group>
+                </v-list>
+            </v-navigation-drawer>
 
             <v-main>
-                <p>テスト</p>
+                <v-container>
+
+                    <v-row dense>
+                        <v-col cols="12">
+                            <v-card color="white">
+                                <div class="d-flex flex-no-wrap justify-space-between">
+                                    <div>
+                                        <v-card-title class="headline">
+                                            フル単ナビ
+                                        </v-card-title>
+                                        <v-card-subtitle>
+                                        </v-card-subtitle>
+                                        <v-card-actions>
+                                            <v-btn
+                                                    class="ml-2 mt-5"
+                                                    outlined
+                                                    rounded
+                                                    small
+                                            >
+                                                サインアップ
+                                            </v-btn>
+                                        </v-card-actions>
+                                    </div>
+                                    <v-avatar
+                                            class="ma-3"
+                                            size="125"
+                                            tile
+                                    >
+                                        <v-img src="/img/screenshot.png"></v-img>
+                                    </v-avatar>
+                                </div>
+                            </v-card>
+                        </v-col>
+
+                        <v-col cols="12">
+                            <v-card color="white">
+                                <v-card-title class="headline">
+                                    フル単ナビとは
+                                </v-card-title>
+                                <v-card-subtitle>
+                                    フル単ナビは岐阜大生のためだけに作られた講義レビューサイトです。テスト、課題、出席などの有無や講義内容などを確認することができます。自分にあった講義を見つけてください！
+                                </v-card-subtitle>
+                            </v-card>
+                        </v-col>
+
+                        <v-col cols="12">
+                            <v-card dark color="#F2507B" class="headline">
+                                <v-card-title>岐阜大生だけの環境</v-card-title>
+                                <v-card-subtitle>
+                                    岐阜大学の学生認証を受けた人だけがフル単ナビを使用することができます。岐阜大生だけの環境で、安心してレビュー書き込みができます。
+                                </v-card-subtitle>
+                            </v-card>
+                        </v-col>
+
+                        <v-col cols="12">
+                            <v-card dark color="#04B2D9" class="headline">
+                                <v-card-title>おすすめ度</v-card-title>
+                                <v-card-subtitle>
+                                    「単位のとりやすさ」や「講義を受けてよかったか」の評価を元に講義ごとのおすすめ度を算出しています。おすすめ度が高い講義は楽単かも⁉︎
+                                </v-card-subtitle>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                </v-container>
             </v-main>
+            <v-footer
+                    flat
+                    tile
+                    class="indigo lighten-1 white--text text-center"
+            >
+                <v-card-text class="white--text">
+                    {{ new Date().getFullYear() }} — <strong>フル単ナビチーム</strong>
+                </v-card-text>
+            </v-footer>
         </v-app>
     </div>
 
@@ -30,6 +139,9 @@
         new Vue({
         el: '#app',
         vuetify: new Vuetify(),
+        data: {
+            drawer: false,
+        }
         })
     </script>
 </body>
